@@ -19,11 +19,9 @@ def get_db_connection():
             database=os.environ.get("DB_NAME")
         )
         if connection.is_connected():
-            print("Connection established")
-        return connection
+            return "Connection established"
     except mysql.connector.Error as err:
-        print(f"Error: {err}")
-        return None
+        return f"Error: {err}"
 
 @app.route('/')
 def index():
@@ -184,6 +182,11 @@ ORDER BY w.priority;
     }
     
     return jsonify(result)
+
+@app.route('/check_db_connection')
+def check_db_connection():
+    status = get_db_connection()
+    return jsonify({"status": status})
 
 if __name__ == '__main__':
     app.run()
