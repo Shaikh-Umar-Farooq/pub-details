@@ -1,16 +1,20 @@
 from flask import Flask, render_template, request, jsonify
 import mysql.connector
 import json
+import os
+from dotenv import load_dotenv 
 
 app = Flask(__name__)
 
-# Database connection function
+# Load variables from the .env file
+load_dotenv()
+
 def get_db_connection():
     return mysql.connector.connect(
-        host="172.25.2.15",
-        user="ruskmediauat",
-        password="Bdg%d34SVtg43SD",
-        database="adminportaldb"
+        host=os.environ.get("DB_HOST"),
+        user=os.environ.get("DB_USER"),
+        password=os.environ.get("DB_PASSWORD"),
+        database=os.environ.get("DB_NAME")
     )
 
 @app.route('/')
