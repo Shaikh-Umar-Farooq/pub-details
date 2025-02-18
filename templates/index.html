@@ -1,0 +1,57 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publisher Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Publisher Management System</h1>
+        </header>
+        
+        <section class="search-section">
+            <h2>Search Publishers</h2>
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Enter publisher name or ID" required>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+        
+        <section class="results-section">
+            <div id="publishers-results">
+                <h2>Publishers</h2>
+                <div id="publishers-list" class="data-list"></div>
+            </div>
+            
+            <div id="widgets-results" style="display: none;">
+                <h2>Widgets for <span id="selected-publisher"></span></h2>
+                <button id="back-to-publishers" class="back-button">Back to Publishers</button>
+                <div id="widgets-list" class="data-list"></div>
+            </div>
+            
+            <div id="elements-results" style="display: none;">
+                <h2>Elements for <span id="selected-widget"></span></h2>
+                <h3> widget id : <span id ="selected-widget-id"></span></h3>
+                <button id="back-to-widgets" class="back-button">Back to Widgets</button>
+                
+                <div id="widget-api-details">
+                    <h3>Widget API Details</h3>
+                    <div id="api-list" class="data-list"></div>
+                </div>
+                
+                <div id="elements-details">
+                    <h3>Widget Elements</h3>
+                    <div id="elements-list" class="data-list"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
