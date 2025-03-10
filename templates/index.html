@@ -1,57 +1,86 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publisher Management System</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Publisher and Game Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1>Publisher Management System</h1>
-        </header>
-        
-        <section class="search-section">
-            <h2>Search Publishers</h2>
-            <form id="search-form">
-                <input type="text" id="search-input" placeholder="Enter publisher name or ID" required>
-                <button type="submit">Search</button>
-            </form>
-        </section>
-        
-        <section class="results-section">
-            <div id="publishers-results">
-                <h2>Publishers</h2>
-                <div id="publishers-list" class="data-list"></div>
-            </div>
-            
-            <div id="widgets-results" style="display: none;">
-                <h2>Widgets for <span id="selected-publisher"></span></h2>
-                <button id="back-to-publishers" class="back-button">Back to Publishers</button>
-                <div id="widgets-list" class="data-list"></div>
-            </div>
-            
-            <div id="elements-results" style="display: none;">
-                <h2>Elements for <span id="selected-widget"></span></h2>
-                <h3> widget id : <span id ="selected-widget-id"></span></h3>
-                <button id="back-to-widgets" class="back-button">Back to Widgets</button>
-                
-                <div id="widget-api-details">
-                    <h3>Widget API Details</h3>
-                    <div id="api-list" class="data-list"></div>
-                </div>
-                
-                <div id="elements-details">
-                    <h3>Widget Elements</h3>
-                    <div id="elements-list" class="data-list"></div>
-                </div>
-            </div>
-        </section>
+      <header>
+        <h1>Publisher and Game Management System</h1>
+      </header>
+      <div class="search-tabs">
+        <button id="pub-search-tab" class="tab-button active">Search Publishers</button>
+        <button id="game-search-tab" class="tab-button">Search Games</button>
+      </div>
+      <section id="pub-search-section" class="search-section active-section">
+        <h2>Search Publishers</h2>
+        <form id="search-form">
+          <input type="text" id="search-input" placeholder="Enter publisher name or ID" required />
+          <button type="submit">Search</button>
+        </form>
+      </section>
+      <section id="game-search-section" class="search-section" style="display: none;">
+        <h2>Search Games</h2>
+        <form id="game-search-form">
+          <input type="text" id="game-search-input" placeholder="Enter game name" required />
+          <button type="submit">Search</button>
+        </form>
+      </section>
+      <section class="results-section">
+        <div id="publishers-results">
+          <h2>Publishers</h2>
+          <div id="publishers-list" class="data-list"></div>
+        </div>
+        <div id="games-results" style="display: none;">
+          <h2>Games</h2>
+          <div id="games-list" class="data-list"></div>
+        </div>
+        <div id="widgets-results" style="display: none;">
+          <h2>Widgets for <span id="selected-publisher"></span></h2>
+          <div id="widgets-filters">
+            <label for="filter-status">Filter by Status:</label>
+            <select id="filter-status">
+              <option value="all">All</option>
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
+            </select>
+            <label for="filter-map-type">Filter by Map Type:</label>
+            <select id="filter-map-type">
+              <option value="all">All</option>
+              <option value="7">Home Tab</option>
+              <option value="1">Games Tab</option>
+              <option value="3">Videos Tab</option>
+            </select>
+          </div>
+          <button id="back-to-publishers" class="back-button">Back to Publishers</button>
+          <div id="widgets-list" class="data-list"></div>
+        </div>
+        <div id="game-details-results" style="display: none;">
+          <h2>Details for <span id="selected-game"></span></h2>
+          <h3>Game Id: <span id="selected-game_id"></span></h3>
+          <h3>Tournament Id: <span id="selected-tournament_id"></span></h3>
+          <button id="back-to-games" class="back-button">Back to Games</button>
+          <div id="game-info" class="data-list"></div>
+        </div>
+        <div id="elements-results" style="display: none;">
+          <h2>Elements for <span id="selected-widget"></span></h2>
+          <h3>Widget Id: <span id="selected-widget-id"></span></h3>
+          <button id="back-to-widgets" class="back-button">Back to Widgets</button>
+          <div id="widget-api-details">
+            <h3>Widget API Details</h3>
+            <div id="api-list" class="data-list"></div>
+          </div>
+          <div id="elements-details">
+            <h3>Widget Elements</h3>
+            <div id="elements-list" class="data-list"></div>
+          </div>
+        </div>
+      </section>
     </div>
-    
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
+  </body>
 </html>
